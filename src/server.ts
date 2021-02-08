@@ -10,6 +10,8 @@ app.use("/user-mapping/", userMappingRouter);
 
 sequelize.sync({}).then(() => {
   app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(
+      `Getraenkekasse-Mete-Compat app listening at http://localhost:${port}`
+    );
   });
 });
