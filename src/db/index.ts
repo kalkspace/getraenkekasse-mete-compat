@@ -4,7 +4,9 @@ import userMappingDefiner from "./models/userMapping";
 
 const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: "user-mapper.sqlite",
+  storage: process.env.DATABASE_FILE
+    ? process.env.DATABASE_FILE
+    : "user-mapper.sqlite",
   logQueryParameters: true,
 });
 
