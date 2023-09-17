@@ -1,9 +1,9 @@
-FROM node:12
+FROM node:18
 
 COPY ./ ./
-RUN yarn
-RUN yarn build
+RUN npm i
+RUN npm run build
 
 EXPOSE 3003
 
-CMD ["yarn", "start"]
+CMD ["npm", "run", "start"]
