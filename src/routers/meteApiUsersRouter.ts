@@ -39,7 +39,7 @@ const postDrinkToMastodon = async (drinkId: number) => {
   const drink = await drinkResponse.json();
   await masto.v1.statuses.create({
     status: `${drink.name} wurde gekauft!`,
-    visibility: "public",
+    visibility: "unlisted",
   });
 };
 
