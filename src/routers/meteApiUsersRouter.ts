@@ -13,9 +13,9 @@ if (meteBaseUrl.endsWith("/")) {
 }
 
 let masto;
-if (process.env.MASTODON_ACCESS_TOKEN) {
+if (process.env.MASTODON_SERVER_URL && process.env.MASTODON_ACCESS_TOKEN) {
   masto = createRestAPIClient({
-    url: "https://botsin.space",
+    url: process.env.MASTODON_SERVER_URL,
     accessToken: process.env.MASTODON_ACCESS_TOKEN,
   });
 }
@@ -23,7 +23,7 @@ if (process.env.MASTODON_ACCESS_TOKEN) {
 const postDrinkToMastodon = async (drinkId: number) => {
   if (!masto) {
     console.warn(
-      "Not posting to mastodon because MASTODON_ACCESS_TOKEN not set"
+      "Not posting to mastodon because MASTODON_SERVER_URL or MASTODON_ACCESS_TOKEN not set"
     );
     return;
   }
